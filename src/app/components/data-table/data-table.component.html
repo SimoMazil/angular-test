@@ -10,11 +10,13 @@
           <option value="year">Année</option>
         </select>
       </th>
+      <th></th>
     </tr>
     <tr>
       <th>Titre</th>
       <th>Genre</th>
       <th>Année</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -22,8 +24,11 @@
       <td>{{ line.originalTitle }}</td>
       <td>{{ line.genre }}</td>
       <td>{{ line.startYear }}</td>
+      <td>
+        <button (click)="onClick(line)">Edit</button>
+      </td>
     </tr>
   </tbody>
 </table>
 
-<app-modal></app-modal>
+<app-modal [editLine]="editLine" *ngIf="show" [show]="show"></app-modal>

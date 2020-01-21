@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DataTable } from 'src/app/models/DataTable';
 
 @Component({
   selector: 'app-modal',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
+  @Input() editLine: DataTable
+  @Input() show: boolean
   title: string
   genre: string
   year: string
@@ -13,10 +16,13 @@ export class ModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.title = this.editLine.originalTitle
+    this.genre = this.editLine.genre
+    this.year = this.editLine.startYear
   }
 
   onSubmit() {
-    console.log(this.title);
+    this.show = false
   }
 
 }

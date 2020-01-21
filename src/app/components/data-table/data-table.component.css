@@ -27,3 +27,7 @@ table tr th input, select{
 table tr:nth-child(odd) {
   background: #f1f1f1;
 }
+
+table tr td button {
+  padding: 5px;
+}

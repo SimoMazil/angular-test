@@ -32,7 +32,9 @@ export class DataTableComponent implements OnInit {
   ]
 
   lines: DataTable[]
+  editLine: DataTable
   filterValue: string = 'title'
+  show: boolean = false
 
   constructor() { }
 
@@ -54,6 +56,11 @@ export class DataTableComponent implements OnInit {
 
   onChange(event: any) {
     this.filterValue = event.target.value;
+  }
+
+  onClick(line) {
+    this.editLine = line
+    this.show = true
   }
 
 }
