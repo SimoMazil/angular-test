@@ -1,11 +1,13 @@
 <table>
   <thead>
     <tr>
-      <th colspan="2"><input type="text" placeholder="Recherche"></th>
+      <th colspan="2">
+        <input (keyup)="onKey($event)" type="text" placeholder="Recherche">
+      </th>
       <th>
-        <select>
-          <option>Title</option>
-          <option>Year</option>
+        <select (change)="onChange($event)">
+          <option value="title">Title</option>
+          <option value="year">Year</option>
         </select>
       </th>
     </tr>
@@ -16,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let line of data">
+    <tr *ngFor="let line of lines">
       <td>{{ line.originalTitle }}</td>
       <td>{{ line.genre }}</td>
       <td>{{ line.startYear }}</td>
