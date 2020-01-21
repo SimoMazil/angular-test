@@ -1,0 +1,8 @@
+<div id="modal">
+  <form (ngSubmit)="onSubmit()">
+    <input type="text" name="title" [(ngModel)]="title" placeholder="Titre" />
+    <input type="text" name="genre" [(ngModel)]="genre" placeholder="Genre" />
+    <input type="number" name="year" [(ngModel)]="year" placeholder="Année" />
+    <button type="submit">Modifier</button>
+  </form>
+</div>

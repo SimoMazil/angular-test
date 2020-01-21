@@ -2,19 +2,19 @@
   <thead>
     <tr>
       <th colspan="2">
-        <input (keyup)="onKey($event)" type="text" placeholder="Recherche">
+        <input (keyup)="onKey($event)" type="text" placeholder="Recherche" />
       </th>
       <th>
         <select (change)="onChange($event)">
-          <option value="title">Title</option>
-          <option value="year">Year</option>
+          <option value="title">Titre</option>
+          <option value="year">Année</option>
         </select>
       </th>
     </tr>
     <tr>
-      <th>Original Title</th>
+      <th>Titre</th>
       <th>Genre</th>
-      <th>Start Year</th>
+      <th>Année</th>
     </tr>
   </thead>
   <tbody>
@@ -25,3 +25,5 @@
     </tr>
   </tbody>
 </table>
+
+<app-modal></app-modal>
