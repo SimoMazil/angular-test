@@ -17,7 +17,7 @@ table tr th, td{
   width: 33%;
 }
 
-table tr th input{
+table tr th input, select{
   width: 90%;
   height: 30px;
   padding-left: 10px;
