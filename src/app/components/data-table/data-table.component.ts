@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTable } from 'src/app/models/DataTable';
+import { DataTableService } from 'src/app/services/data-table.service';
 
 @Component({
   selector: 'app-data-table',
@@ -7,37 +8,16 @@ import { DataTable } from 'src/app/models/DataTable';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent implements OnInit {
-  data: DataTable[] = [
-    {
-      id: '1',
-      primaryTitle: 'Gone Girl',
-      originalTitle: 'Gone Girl',
-      startYear: '2010',
-      genre: 'Drama'
-    },
-    {
-      id: '2',
-      primaryTitle: 'Fight Club',
-      originalTitle: 'Fight Club',
-      startYear: '1999',
-      genre: 'Action'
-    },
-    {
-      id: '3',
-      primaryTitle: 'Seven',
-      originalTitle: 'Se7en',
-      startYear: '2020',
-      genre: 'Crime'
-    },
-  ]
+  data: DataTable[]
   lines: DataTable[]
   editLine: DataTable
   filterValue: string = 'title'
   modal: boolean = false
 
-  constructor() { }
+  constructor(private dataTableSerivce: DataTableService) { }
 
   ngOnInit() {
+    this.data = this.dataTableSerivce.getData()
     this.lines = this.data.sort((a: any, b: any) => a.startYear - b.startYear)
   }
 
