@@ -31,4 +31,4 @@
   </tbody>
 </table>
 
-<app-modal [editLine]="editLine" *ngIf="show" [show]="show"></app-modal>
+<app-modal [editLine]="editLine" *ngIf="modal" (hideModal)="hideModal($event)"></app-modal>

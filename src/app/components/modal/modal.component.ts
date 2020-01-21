@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataTable } from 'src/app/models/DataTable';
 
 @Component({
@@ -8,10 +8,14 @@ import { DataTable } from 'src/app/models/DataTable';
 })
 export class ModalComponent implements OnInit {
   @Input() editLine: DataTable
-  @Input() show: boolean
+  @Input() modal: boolean
+  
   title: string
   genre: string
   year: string
+
+  @Output() hideModal: EventEmitter<boolean> = new EventEmitter()
+  @Output() editData: EventEmitter<DataTable> = new EventEmitter()
 
   constructor() { }
 
@@ -22,7 +26,13 @@ export class ModalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.show = false
+    this.editLine.originalTitle = this.title
+    this.editLine.genre = this.genre
+    this.editLine.startYear = this.year
+    this.editData.emit(this.editLine)
+
+    this.modal = false
+    this.hideModal.emit(this.modal)
   }
 
 }

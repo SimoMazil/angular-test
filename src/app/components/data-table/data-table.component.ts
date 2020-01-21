@@ -30,11 +30,10 @@ export class DataTableComponent implements OnInit {
       genre: 'Crime'
     },
   ]
-
   lines: DataTable[]
   editLine: DataTable
   filterValue: string = 'title'
-  show: boolean = false
+  modal: boolean = false
 
   constructor() { }
 
@@ -60,7 +59,11 @@ export class DataTableComponent implements OnInit {
 
   onClick(line) {
     this.editLine = line
-    this.show = true
+    this.modal = true
+  }
+
+  hideModal(event) {
+    this.modal = event
   }
 
 }
