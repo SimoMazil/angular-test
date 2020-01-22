@@ -29,7 +29,6 @@ export class ModalComponent implements OnInit {
     this.editLine.originalTitle = this.title
     this.editLine.genre = this.genre
     this.editLine.startYear = this.year.toString()
-    this.editData.emit(this.editLine)
 
     this.modal = false
     this.hideModal.emit(this.modal)

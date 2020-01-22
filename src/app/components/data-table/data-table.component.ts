@@ -8,7 +8,6 @@ import { DataTableService } from 'src/app/services/data-table.service';
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent implements OnInit {
-  data: DataTable[]
   lines: DataTable[]
   editLine: DataTable
   filterValue: string = 'title'
@@ -17,19 +16,23 @@ export class DataTableComponent implements OnInit {
   constructor(private dataTableSerivce: DataTableService) { }
 
   ngOnInit() {
-    this.data = this.dataTableSerivce.getData()
-    this.lines = this.data.sort((a: any, b: any) => a.startYear - b.startYear)
+    this.lines = this.dataTableSerivce.getData().sort((a: any, b: any) => a.startYear - b.startYear)
   }
 
   onKey(event: any) {
-    if(event.target.value !== '' && this.filterValue === 'title') {
-      this.lines = this.lines.filter(item => 
-      item.originalTitle.toLowerCase().includes(event.target.value.toLowerCase()) || 
-      item.primaryTitle.toLowerCase().includes(event.target.value.toLowerCase()))
-    } else if(event.target.value !== '' && this.filterValue === 'year') {
-      this.lines = this.lines.filter(item => item.startYear.includes(event.target.value.toString()))
+    const value = event.target.value
+    
+    if(value !== '') {
+      if(this.filterValue === 'title') {
+        this.lines = this.lines.filter(item => 
+          item.originalTitle.toLowerCase().includes(value.toLowerCase()) || 
+          item.primaryTitle.toLowerCase().includes(value.toLowerCase())
+        )
+      } else {
+        this.lines = this.lines.filter(item => item.startYear.includes(value.toString()))
+      }
     } else {
-      this.lines = this.data
+      this.lines = this.dataTableSerivce.getData()
     }
   }
 
@@ -37,12 +40,12 @@ export class DataTableComponent implements OnInit {
     this.filterValue = event.target.value;
   }
 
-  onClick(line) {
+  onClick(line: any) {
     this.editLine = line
     this.modal = true
   }
 
-  hideModal(event) {
+  hideModal(event: any) {
     this.modal = event
   }
 
